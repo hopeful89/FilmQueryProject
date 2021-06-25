@@ -38,7 +38,7 @@ public class Actor {
 
 	@Override
 	public String toString() {
-		return "Actor's name: " + firstName + " " + lastName;
+		return firstName + " " + lastName;
 	}
 
 	@Override
