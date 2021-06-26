@@ -39,11 +39,9 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 						rs.getInt("release_year"), rs.getInt("language_id"), rs.getString("rental_duration"),
 						rs.getDouble("rental_rate"), rs.getString("length"), rs.getDouble("replacement_cost"),
 						rs.getString("rating"), rs.getString("special_features"), findActorsByFilmId(filmId), findFilmLanguage(rs.getInt("id")));
-				
 			}
-			ps.close();
-			rs.close();
-			conn.close();
+			
+			closeAllConnections(ps, rs, conn);	
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -63,9 +61,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			while (rs.next()) {
 				newActor = new Actor(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"));
 			}
-			ps.close();
-			rs.close();
-			conn.close();
+			
+			closeAllConnections(ps, rs, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -90,9 +87,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				Actor newActor = new Actor(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"));
 				actorList.add(newActor);
 			}
-			ps.close();
-			rs.close();
-			conn.close();
+			
+			closeAllConnections(ps, rs, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -120,9 +116,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				
 				newFilms.add(newFilm);
 			}
-			ps.close();
-			rs.close();
-			conn.close();
+			
+			closeAllConnections(ps, rs, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -143,9 +138,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				language = rs.getString("language");
 			}
 			
-			ps.close();
-			rs.close();
-			conn.close();
+			closeAllConnections(ps, rs, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -158,6 +151,12 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 	private PreparedStatement createPreparedStatement(String sql) throws SQLException {
 		return conn.prepareStatement(sql);
+	}
+	
+	private void closeAllConnections(PreparedStatement ps, ResultSet rs, Connection conn) throws SQLException {
+		ps.close();
+		rs.close();
+		conn.close();
 	}
 
 
