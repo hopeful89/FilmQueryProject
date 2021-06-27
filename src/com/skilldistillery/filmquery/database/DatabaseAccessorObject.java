@@ -38,7 +38,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				newFilm = new Film(rs.getInt("id"), rs.getString("title"), rs.getString("description"),
 						rs.getInt("release_year"), rs.getInt("language_id"), rs.getString("rental_duration"),
 						rs.getDouble("rental_rate"), rs.getString("length"), rs.getDouble("replacement_cost"),
-						rs.getString("rating"), rs.getString("special_features"), findActorsByFilmId(filmId), findFilmLanguage(rs.getInt("id")));
+						rs.getString("rating"), rs.getString("special_features"), findActorsByFilmId(filmId), findFilmLanguage(rs.getInt("id")), findFilmCategory(rs.getInt("id")));
 			}
 			
 			closeAllConnections(ps, rs, conn);	
@@ -112,7 +112,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				Film newFilm = new Film(rs.getInt("id"), rs.getString("title"), rs.getString("description"),
 						rs.getInt("release_year"), rs.getInt("language_id"), rs.getString("rental_duration"),
 						rs.getDouble("rental_rate"), rs.getString("length"), rs.getDouble("replacement_cost"),
-						rs.getString("rating"), rs.getString("special_features"), findActorsByFilmId(rs.getInt("id")), findFilmLanguage(rs.getInt("id")));
+						rs.getString("rating"), rs.getString("special_features"), findActorsByFilmId(rs.getInt("id")), findFilmLanguage(rs.getInt("id")), findFilmCategory(rs.getInt("id")));
 				
 				newFilms.add(newFilm);
 			}
@@ -144,7 +144,40 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		}
 		return language;
 	}
+	@Override
+	public String findFilmCategory(int filmId) {
+		String category = "";
+		try {
+			createConnection();
+			PreparedStatement ps = createPreparedStatement("SELECT category.name 'category' from film JOIN film_category ON film_category.film_id = film.id JOIN category ON "
+			                                                + "film_category.category_id = category.id WHERE film.id = ?");
+			ps.setInt(1, filmId);
+			ResultSet rs = ps.executeQuery();
 
+			while (rs.next()) {
+				category = rs.getString("category");
+			}
+			
+			closeAllConnections(ps, rs, conn);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return category;
+	}
+	
+	@Override
+	public Integer findFilmAvailibility(int filmId) {
+//		Select COUNT(*) from inventory_item JOIN store ON inventory_item.store_id = store.id JOIN rental ON inventory_item.id = rental.inventory_id WHERE film_id = 4 && return_date IS NOT NULL;
+		return null;
+	}
+
+	@Override
+	public String findFilmCondition(int filmId) {
+//		Select DISTINCT media_condition from inventory_item JOIN store ON inventory_item.store_id = store.id JOIN rental ON inventory_item.id = rental.inventory_id WHERE film_id = 4 && return_date IS NOT NULL;
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	private void createConnection() throws SQLException {
 		conn = DriverManager.getConnection(URL, user, pass);
 	}
@@ -158,6 +191,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		rs.close();
 		conn.close();
 	}
+
+
 
 
 

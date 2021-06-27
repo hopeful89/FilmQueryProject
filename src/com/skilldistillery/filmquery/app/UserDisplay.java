@@ -16,11 +16,10 @@ public class UserDisplay {
 		System.out.print("       What would you like to do? ");
 	}
 	
-
 	public void printFilmInformation(Film film) {
 		System.out.println("TITLE: " + film.getTitle() + "\n" + "DESCRIPTION: " + film.getDescription() + "\n"
 				+ "Language: " + film.getLanguage() + "\n" + "Year: " + film.getReleaseYear() + "\n" + "Rating: "
-				+ film.getRating());
+				+ film.getRating() + "\n" + "Category: " + film.getCategory());
 		System.out.print("Actors: ");
 		film.getFeaturedActors().forEach(actor -> System.out.print(actor + ", "));
 		System.out.println("\n");

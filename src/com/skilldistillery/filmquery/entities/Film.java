@@ -16,11 +16,11 @@ public class Film {
 	private String specialFeatures;
 	private List<Actor> featuredActors;
 	private String language;
+	private String category;
 
-	
 	public Film(int id, String title, String description, Integer releaseYear, int languageId, String rentalDuration,
-			double rentalRate, String length, double replacementCost, String rating, String specialFeatures, List<Actor> featuredActors, String language) {
-		super();
+			double rentalRate, String length, double replacementCost, String rating, String specialFeatures,
+			List<Actor> featuredActors, String language, String category) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
@@ -34,8 +34,10 @@ public class Film {
 		this.specialFeatures = specialFeatures;
 		this.featuredActors = featuredActors;
 		this.language = language;
+		this.category = category;
+
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -104,6 +106,7 @@ public class Film {
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -159,15 +162,20 @@ public class Film {
 		return true;
 	}
 
+	public String getCategory() {
+		return category;
+	}
+
 	public String getLanguage() {
 		return language;
 	}
 
 	@Override
 	public String toString() {
-		return "Film id: " + id + "\ntitle: " + title + "\ndescription: " + description + "\nreleaseYear: " + releaseYear
-				+ "\nlanguage: " + language + "\nlanguageid: " + languageId + "\nrentalDuration: " + rentalDuration + "\nrentalRate: " + rentalRate
-				+ "\nlength: " + length + "\nreplacementCost: " + replacementCost + "\nrating: " + rating
-				+ "\nspecialFeatures: " + specialFeatures + "\n" + "Actors: " + featuredActors;
+		return "Film id: " + id + "\ntitle: " + title + "\ndescription: " + description + "\nreleaseYear: "
+				+ releaseYear + "\nlanguage: " + language + "\nlanguageid: " + languageId + "\nrentalDuration: "
+				+ rentalDuration + "\nrentalRate: " + rentalRate + "\nlength: " + length + "\nreplacementCost: "
+				+ replacementCost + "\nrating: " + rating + "\nspecialFeatures: " + specialFeatures + "\n"
+				+ "Category: " + category + "\n" + "Actors: " + featuredActors;
 	}
 }

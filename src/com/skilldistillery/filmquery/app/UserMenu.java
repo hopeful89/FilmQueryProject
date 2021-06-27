@@ -15,7 +15,7 @@ public class UserMenu {
 	public final static int SUBMENUOPTIONCOUNT = 2;
 	
 	public boolean startUserMainMenu(int userInput, Scanner input) {
-
+		
 		switch (userInput) {
 		case 1:
 			display.printSearchType("id");
@@ -45,7 +45,6 @@ public class UserMenu {
 			break;
 		case 3:
 			return false;
-
 	}
 	return true;
 }
