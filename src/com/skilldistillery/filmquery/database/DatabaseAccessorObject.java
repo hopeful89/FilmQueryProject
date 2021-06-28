@@ -165,18 +165,17 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		return category;
 	}
 	
-	@Override
-	public Integer findFilmAvailibility(int filmId) {
+//	@Override
+//	public Integer findFilmAvailibility(int filmId) {
 //		Select COUNT(*) from inventory_item JOIN store ON inventory_item.store_id = store.id JOIN rental ON inventory_item.id = rental.inventory_id WHERE film_id = 4 && return_date IS NOT NULL;
-		return null;
-	}
+//		return null;
+//	}
 
-	@Override
-	public String findFilmCondition(int filmId) {
+//	@Override
+//	public String findFilmCondition(int filmId) {
 //		Select DISTINCT media_condition from inventory_item JOIN store ON inventory_item.store_id = store.id JOIN rental ON inventory_item.id = rental.inventory_id WHERE film_id = 4 && return_date IS NOT NULL;
-		// TODO Auto-generated method stub
-		return null;
-	}
+//		return null;
+//	}
 	
 	private void createConnection() throws SQLException {
 		conn = DriverManager.getConnection(URL, user, pass);

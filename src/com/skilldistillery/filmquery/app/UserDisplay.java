@@ -1,7 +1,7 @@
 package com.skilldistillery.filmquery.app;
 
 import com.skilldistillery.filmquery.entities.Film;
-
+  
 public class UserDisplay {
 	
 	public void printMainMenuSelection() {
@@ -21,7 +21,7 @@ public class UserDisplay {
 				+ "Language: " + film.getLanguage() + "\n" + "Year: " + film.getReleaseYear() + "\n" + "Rating: "
 				+ film.getRating() + "\n" + "Category: " + film.getCategory());
 		System.out.print("Actors: ");
-		film.getFeaturedActors().forEach(actor -> System.out.print(actor + ", "));
+		film.getFeaturedActors().forEach(actor -> System.out.print(actor + " "));
 		System.out.println("\n");
 	}
 	

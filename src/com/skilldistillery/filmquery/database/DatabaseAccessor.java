@@ -12,7 +12,7 @@ public interface DatabaseAccessor {
 	public List<Film> findFilmByKeyword(String keyword);
 	public String findFilmLanguage(int filmId);
 	public String findFilmCategory(int filmID);
-	public Integer findFilmAvailibility(int filmId);
-	public String findFilmCondition(int filmId);
+//	public Integer findFilmAvailibility(int filmId);
+//	public String findFilmCondition(int filmId);
 	
 }
