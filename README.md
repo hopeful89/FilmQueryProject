@@ -9,9 +9,9 @@
   This application allows users to find film information based on ID and keyword search in the console.
 
 ## Technologies used
-  # MAVEN - dependencies
-  # Java - OOP, Polymorphism, JDBC 
-  # MAMP - used for MYSQL/Object Relation Mapping
+  * MAVEN - dependencies
+  * Java - OOP, Polymorphism, JDBC
+  * MAMP - used for MYSQL/Object Relation Mapping
 
 ## Lessons Learned
   This project introduced a lot of new and moving parts.  Use of JDBC and MySQL were all new to me and it was a joy to correct mistakes and get the program running.  The best part of this project for me was learning about relational databases and formulating queries.  I now understand how to use Java to get a connection, prepare my statement, and display requested data.
